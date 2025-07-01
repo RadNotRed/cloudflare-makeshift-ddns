@@ -8,7 +8,7 @@ set ZONE_ID=YOUR_CLOUDFLARE_ZONE_ID
 set TARGET_IP=CURRENT_SET_IP
 set PROXY_STATUS=true
 
-for /f %%a in ('curl -s ifconfig.me') do set CURRENT_IP=%%a
+for /f %%a in ('curl -L -4 iprs.fly.dev') do set CURRENT_IP=%%a
 echo Current public IP is: !CURRENT_IP!
 
 curl -s -X GET "https://api.cloudflare.com/client/v4/zones/%ZONE_ID%/dns_records?type=A" ^
